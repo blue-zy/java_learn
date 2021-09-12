@@ -4,15 +4,15 @@ package main.designPattern.Factory;
 public class FactoryMethod {
 
     public static void main(String[] args) {
-        AbstractFactory2 factory2A = new Factory2A();
-        AbstractFactory2 factory2B = new Factory2B();
-        factory2A.creatProduct().print();
-        factory2B.creatProduct().print();
+        Factory factoryA = new FactoryA();
+        Factory factoryB = new FactoryB();
+        factoryA.creatProduct().print();
+        factoryB.creatProduct().print();
 
-        Product2 product2A = new Factory2A().creatProduct();
-        Product2 product2B = new Factory2B().creatProduct();
-        product2A.print();
-        product2B.print();
+        Phone iphone = new FactoryA().creatProduct();
+        Phone huaweiphone = new FactoryB().creatProduct();
+        iphone.print();
+        huaweiphone.print();
     }
 
 }
@@ -21,27 +21,27 @@ public class FactoryMethod {
  * 抽象工厂类
  * 可定义为接口，扩展性更好
  */
-abstract class AbstractFactory2 {
-    public abstract Product2 creatProduct();
+abstract class Factory {
+    public abstract Phone creatProduct();
 }
 
 /**
  * 具体工厂A
  */
-class Factory2A extends AbstractFactory2 {
+class FactoryA extends Factory {
     @Override
-    public Product2 creatProduct() {
-        return new Product2A();
+    public Phone creatProduct() {
+        return new Iphone();
     }
 }
 
 /**
  * 具体工厂B
  */
-class Factory2B extends AbstractFactory2 {
+class FactoryB extends Factory {
     @Override
-    public Product2 creatProduct() {
-        return new Product2B();
+    public Phone creatProduct() {
+        return new Huaweiphone();
     }
 }
 
@@ -49,28 +49,28 @@ class Factory2B extends AbstractFactory2 {
  * 抽象产品类
  * 可定义为接口，扩展性更好
  */
-abstract class Product2 {
+abstract class Phone {
     public abstract void print();
 }
 
 /**
  * 具体产品类A
  */
-class Product2A extends Product2 {
+class Iphone extends Phone {
 
     @Override
     public void print() {
-        System.out.println("product A");
+        System.out.println("product iphone");
     }
 }
 
 /**
  * 具体产品类B
  */
-class Product2B extends Product2 {
+class Huaweiphone extends Phone {
 
     @Override
     public void print() {
-        System.out.println("product B");
+        System.out.println("product huaweiphone");
     }
 }
