@@ -149,7 +149,7 @@ class Singleton7{
     }
 
     public static Singleton getSingleton() {
-        if (instance == null) {
+        if (instance == null) { // 问题出现在这一行 由于指令重排序，虽然可能为空，但其实是实例还未初始化完成，从而造成多次初始化
             synchronized (Singleton7.class) {
                 if (instance == null) {
                     instance = new Singleton();

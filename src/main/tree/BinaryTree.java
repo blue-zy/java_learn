@@ -7,16 +7,21 @@ import java.util.*;
 public class BinaryTree {
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(0);
-        TreeNode nodeLeft1 = root.setLeft(new TreeNode(1));
-        TreeNode nodeRight1 = root.setRight(new TreeNode(2));
-        TreeNode nodeLeft11 = nodeLeft1.setLeft(new TreeNode(11));
-        TreeNode nodeLeft12 = nodeLeft1.setRight(new TreeNode(12));
-        TreeNode nodeRight11 = nodeRight1.setLeft(new TreeNode(21));
-        TreeNode nodeRight12 = nodeRight1.setRight(new TreeNode(22));
-//        LevOrder(root);
-//        PreOrder(root);
-//        MidOrder(root);
+        TreeNode root = new TreeNode(2);
+        TreeNode nodeLeft1 = root.setLeft(new TreeNode(7));
+        TreeNode nodeRight1 = root.setRight(new TreeNode(5));
+        TreeNode nodeLeft11 = nodeLeft1.setLeft(new TreeNode(2));
+        TreeNode nodeLeft12 = nodeLeft1.setRight(new TreeNode(6));
+        nodeLeft12.setLeft(new TreeNode(5));
+        nodeLeft12.setRight(new TreeNode(11));
+        TreeNode nodeRight12 = nodeRight1.setRight(new TreeNode(9));
+        nodeRight12.setLeft(new TreeNode(4));
+        LevOrder(root);
+        System.out.println();
+        PreOrder(root);
+        System.out.println();
+        MidOrder(root);
+        System.out.println();
         PosOrder(root);
     }
 
